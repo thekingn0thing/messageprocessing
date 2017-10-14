@@ -26,8 +26,6 @@ Run with custom file:
 ```bash
 java -jar messageprocessing-1.0-SNAPSHOT.jar [path to file]
 ```
-
-
 ## Message Format 
 
 The system uses simplified [FIX-like](http://www.fixtradingcommunity.org) message format. Each message contains tag number and value. Main different that only few tags are supported and that message should start always from Message Type(35) tag. 
@@ -57,6 +55,10 @@ The system uses simplified [FIX-like](http://www.fixtradingcommunity.org) messag
 </tr>
 </table>
 
+### Adjustment message 
+
+When adjustment message is received then required operation is applied to all order with the same symbol. All old orders are overwritten with new and only results of applying of adjustment operation are stored.     
+
 ### Supported tags
 
 * Message Type(35)
@@ -66,6 +68,13 @@ The system uses simplified [FIX-like](http://www.fixtradingcommunity.org) messag
 * Adjustment Type(334)
 
 
-### Exception handling
+## Output
+
+The system prints all outcomes in console.
+Every 10th message it prints list of received orders with total quantity and total value for all orders. Total values is calculated by summing `quantity * price` for each order.   
+
+After 50th message system stops receiving messages and prints report with list of adjustments applied to stored symbols. Application does not continue work after 50th message.   
+
+## Exception handling
 
 Exception handling is implement only for message processing. Right now most of exception during message parsing are ignored.  
