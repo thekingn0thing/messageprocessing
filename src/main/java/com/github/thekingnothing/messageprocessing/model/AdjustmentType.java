@@ -11,7 +11,7 @@ public enum AdjustmentType {
     
         @Override
         public BigDecimal apply(final Total total, final BigDecimal newPrice) {
-            return total.getTotalPrice().add(total.getQuantity().multiply(newPrice));
+            return total.getTotalValue().add(total.getQuantity().multiply(newPrice));
         }
     
         @Override
@@ -28,7 +28,7 @@ public enum AdjustmentType {
     
         @Override
         public BigDecimal apply(final Total total, final BigDecimal newPrice) {
-            return total.getTotalPrice().add(total.getQuantity().multiply(newPrice));
+            return total.getTotalValue().add(total.getQuantity().multiply(newPrice));
         }
     
         @Override
@@ -50,6 +50,10 @@ public enum AdjustmentType {
     
     AdjustmentType(final Integer operationType) {
         this.operationType = operationType;
+    }
+    
+    public Integer getOperationType() {
+        return operationType;
     }
     
     public abstract BigDecimal apply(BigDecimal oldPrice, BigDecimal newPrice);

@@ -1,7 +1,7 @@
 package com.github.thekingnothing.messageprocessing.mock;
 
 import com.github.thekingnothing.messageprocessing.message.Message;
-import com.github.thekingnothing.messageprocessing.Processor;
+import com.github.thekingnothing.messageprocessing.processing.Processor;
 
 import java.util.ArrayList;
 import java.util.List;

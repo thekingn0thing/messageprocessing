@@ -4,28 +4,28 @@ import java.math.BigDecimal;
 
 public class Total {
     private final BigDecimal quantity;
-    private final BigDecimal totalPrice;
+    private final BigDecimal totalValue;
     
     public Total() {
         this(BigDecimal.ZERO, BigDecimal.ZERO);
     }
     
-    public Total(final BigDecimal quantity, final BigDecimal totalPrice) {
+    public Total(final BigDecimal quantity, final BigDecimal totalValue) {
         this.quantity = quantity;
-        this.totalPrice = totalPrice;
+        this.totalValue = totalValue;
     }
     
     public BigDecimal getQuantity() {
         return quantity;
     }
     
-    public BigDecimal getTotalPrice() {
-        return totalPrice;
+    public BigDecimal getTotalValue() {
+        return totalValue;
     }
     
     public Total add(final BigDecimal quantity, final BigDecimal price) {
         final BigDecimal q = this.quantity.add(quantity);
-        final BigDecimal tp = totalPrice.add(quantity.multiply(price));
+        final BigDecimal tp = totalValue.add(quantity.multiply(price));
         return new Total(q, tp);
     }
 }
