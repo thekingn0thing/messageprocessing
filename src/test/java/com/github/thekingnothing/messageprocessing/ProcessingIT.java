@@ -4,6 +4,7 @@ import com.github.thekingnothing.messageprocessing.exception.RejectionException;
 import com.github.thekingnothing.messageprocessing.mock.MockLogger;
 import com.github.thekingnothing.messageprocessing.model.AdjustmentType;
 import com.github.thekingnothing.messageprocessing.model.Order;
+import com.github.thekingnothing.messageprocessing.processing.ProcessorConfiguration;
 import com.github.thekingnothing.messageprocessing.processing.processor.MainProcessor;
 import com.github.thekingnothing.messageprocessing.storage.Storage;
 import com.github.thekingnothing.messageprocessing.storage.support.DefaultStorage;
@@ -77,8 +78,9 @@ public class ProcessingIT implements WithMessage {
     }
     
     private void assertThatReportDetailingNumberOfOrderOfEachSymbolAndTotalValueHasBeenPrint(final MockLogger logger) {
-        logger.assertLogContains("| IBM | 51 | 152 |");
-        logger.assertLogContains("| IBM | 52 | 284.5 |");
+        logger.assertLogContains("| Symbol | Quantity | Total Value |");
+        logger.assertLogContains("|  IBM   |    51    |     152     |");
+        logger.assertLogContains("|  IBM   |    52    |    284.5    |");
     }
     
 }

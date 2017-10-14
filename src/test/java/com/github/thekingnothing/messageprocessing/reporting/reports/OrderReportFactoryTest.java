@@ -37,8 +37,9 @@ public class OrderReportFactoryTest {
         assertThat(report.lines())
             .as("Report has detailing of the number of sales and total value.")
             .contains(
-                "| AAA | 1 | 1 |",
-                "| BBB | 10 | 10 |"
+                "| Symbol | Quantity | Total Value |",
+                "|  AAA   |    1     |      1      |",
+                "|  BBB   |    10    |     10      |"
             );
     }
 }

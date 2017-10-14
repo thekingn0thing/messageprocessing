@@ -9,7 +9,7 @@ public class Symbol extends StringField {
         return new Symbol(data);
     }
     
-    private Symbol(String data) {
+    public Symbol(String data) {
         super(FIELD, data);
     }
 }

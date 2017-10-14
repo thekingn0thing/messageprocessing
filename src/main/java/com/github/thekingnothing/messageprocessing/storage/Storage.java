@@ -26,4 +26,6 @@ public interface Storage {
     void truncateOrders(String symbol);
     
     Map<String, Total> allTotals();
+    
+    boolean hasOrdersForSymbol(String symbol);
 }

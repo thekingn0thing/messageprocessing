@@ -10,7 +10,7 @@ public class AdjustmentOperationType extends IntField {
         return new AdjustmentOperationType(adjustmentType);
     }
     
-    private AdjustmentOperationType(final int adjustmentType) {
+    public AdjustmentOperationType(final Integer adjustmentType) {
         super(FIELD, adjustmentType);
     }
 }

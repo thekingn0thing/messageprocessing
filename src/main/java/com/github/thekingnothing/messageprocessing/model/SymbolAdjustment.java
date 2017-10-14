@@ -20,4 +20,14 @@ public final class SymbolAdjustment {
     public List<Adjustment> getAdjustments() {
         return new ArrayList<>(adjustments);
     }
+    
+    
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("SymbolAdjustment{");
+        sb.append("symbol='").append(symbol).append('\'');
+        sb.append(", adjustments=").append(adjustments);
+        sb.append('}');
+        return sb.toString();
+    }
 }

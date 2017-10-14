@@ -47,6 +47,11 @@ public enum AdjustmentType {
         public BigDecimal apply(final Total total, final BigDecimal newPrice) {
             return total.getTotalValue().multiply(newPrice);
         }
+    
+        @Override
+        public String toString() {
+            return "*";
+        }
     };
     
     public static AdjustmentType find(final Integer type) {

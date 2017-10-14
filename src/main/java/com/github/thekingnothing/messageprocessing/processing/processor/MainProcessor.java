@@ -57,7 +57,7 @@ public class MainProcessor implements Processor {
     
     private void assertThatMessageCanBeAccepted() {
         if (isPaused()){
-            throw new RejectionException("Message processing is pausing.");
+            throw new RejectionException("Message processing is paused.");
         }
     }
     

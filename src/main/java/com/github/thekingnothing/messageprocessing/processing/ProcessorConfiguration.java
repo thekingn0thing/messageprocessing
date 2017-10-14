@@ -1,4 +1,4 @@
-package com.github.thekingnothing.messageprocessing;
+package com.github.thekingnothing.messageprocessing.processing;
 
 import com.github.thekingnothing.messageprocessing.log.Logger;
 import com.github.thekingnothing.messageprocessing.message.MessageType;
@@ -23,7 +23,7 @@ public class ProcessorConfiguration {
     private int adjustmentReportPeriod;
     private int messageLimit;
     
-    ProcessorConfiguration(final int orderReportPeriod, final int adjustmentReportPeriod, final int messageLimit) {
+    public ProcessorConfiguration(final int orderReportPeriod, final int adjustmentReportPeriod, final int messageLimit) {
         this.orderReportPeriod = orderReportPeriod;
         this.adjustmentReportPeriod = adjustmentReportPeriod;
         this.messageLimit = messageLimit;

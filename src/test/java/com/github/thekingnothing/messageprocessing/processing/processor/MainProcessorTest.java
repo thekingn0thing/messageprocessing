@@ -81,7 +81,7 @@ public class MainProcessorTest implements WithMessage {
         assertThatThrownBy(() -> objectUnderTest.process(createAnyOrder()))
             .as("Message is not accepted during pausing")
             .isExactlyInstanceOf(RejectionException.class)
-            .hasMessageContaining("Message processing is pausing.");
+            .hasMessageContaining("Message processing is paused.");
     }
     
     private Message createAnyOrder() {

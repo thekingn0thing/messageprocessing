@@ -4,7 +4,6 @@ package com.github.thekingnothing.messageprocessing.log.support;
 import com.github.thekingnothing.messageprocessing.log.LogImplementer;
 import com.github.thekingnothing.messageprocessing.log.Logger;
 
-import java.io.PrintStream;
 import java.text.MessageFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -26,7 +25,7 @@ public class ConsoleLogImplementer implements LogImplementer {
     
         @Override
         public void info(final String message) {
-            final String log = formatLog(message);
+            final String log = formatLog(message, "INFO");
             log(log);
         }
     
@@ -35,8 +34,15 @@ public class ConsoleLogImplementer implements LogImplementer {
             info(String.format(message, args));
         }
     
-        private String formatLog(final String message) {
-            return logFormat.format(new Object[]{time(), "INFO", message});
+        @Override
+        public void error(final String message, final Throwable e) {
+            final String log = formatLog(message, "ERROR");
+            log(log);
+            e.printStackTrace(System.out);
+        }
+    
+        private String formatLog(final String message, final String level) {
+            return logFormat.format(new Object[]{time(), level, message});
         }
     
         private String time() {

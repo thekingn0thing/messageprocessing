@@ -12,7 +12,7 @@ public class Quantity extends DecimalField{
         return new Quantity(quantity);
     }
     
-    private Quantity(final BigDecimal data) {
+    public Quantity(final BigDecimal data) {
         super(FIELD, data);
     }
 }

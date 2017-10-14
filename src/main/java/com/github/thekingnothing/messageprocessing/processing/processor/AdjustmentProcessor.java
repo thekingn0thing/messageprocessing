@@ -1,14 +1,14 @@
 package com.github.thekingnothing.messageprocessing.processing.processor;
 
-import com.github.thekingnothing.messageprocessing.model.AdjustmentType;
-import com.github.thekingnothing.messageprocessing.model.Order;
-import com.github.thekingnothing.messageprocessing.model.Total;
-import com.github.thekingnothing.messageprocessing.processing.Processor;
-import com.github.thekingnothing.messageprocessing.model.Adjustment;
 import com.github.thekingnothing.messageprocessing.message.Message;
 import com.github.thekingnothing.messageprocessing.message.field.AdjustmentOperationType;
 import com.github.thekingnothing.messageprocessing.message.field.Price;
 import com.github.thekingnothing.messageprocessing.message.field.Symbol;
+import com.github.thekingnothing.messageprocessing.model.Adjustment;
+import com.github.thekingnothing.messageprocessing.model.AdjustmentType;
+import com.github.thekingnothing.messageprocessing.model.Order;
+import com.github.thekingnothing.messageprocessing.model.Total;
+import com.github.thekingnothing.messageprocessing.processing.Processor;
 import com.github.thekingnothing.messageprocessing.storage.Storage;
 
 import java.math.BigDecimal;
@@ -29,12 +29,17 @@ public class AdjustmentProcessor implements Processor {
         final Adjustment adjustment = getAdjustment(message);
     
         final String symbol = adjustment.getSymbol();
-        
-        updateOrders(adjustment, symbol);
     
+        if (storage.hasOrdersForSymbol(symbol)) {
+            storage.storeAdjustment(adjustment);
+            updateOrders(adjustment, symbol);
+            updateTotal(adjustment, symbol);
+        }
+    }
+    
+    private void updateTotal(final Adjustment adjustment, final String symbol) {
         final Total total = storage.getTotal(symbol);
         storage.storeTotal(symbol, adjustment.apply(total));
-    
     }
     
     private void updateOrders(final Adjustment adjustment, final String symbol) {
@@ -52,8 +57,6 @@ public class AdjustmentProcessor implements Processor {
         final AdjustmentType adjustmentType = AdjustmentType.find(message.getInteger(AdjustmentOperationType.FIELD));
         final BigDecimal price = message.getDecimal(Price.FIELD);
     
-        final Adjustment adjustment = new Adjustment(symbol, adjustmentType, price);
-        storage.storeAdjustment(adjustment);
-        return adjustment;
+        return new Adjustment(symbol, adjustmentType, price);
     }
 }

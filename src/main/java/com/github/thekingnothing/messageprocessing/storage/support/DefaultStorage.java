@@ -76,6 +76,11 @@ public class DefaultStorage implements Storage {
         return new HashMap<>(totals);
     }
     
+    @Override
+    public boolean hasOrdersForSymbol(final String symbol) {
+        return orders.containsKey(symbol);
+    }
+    
     private List<Adjustment> getAdjustmentLog(final String symbol) {
         return adjustments.computeIfAbsent(symbol, s -> new ArrayList<>());
     }

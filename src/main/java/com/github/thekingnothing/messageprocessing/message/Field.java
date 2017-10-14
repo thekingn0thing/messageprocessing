@@ -17,4 +17,8 @@ public class Field<T> {
     public int getTag() {
         return tag;
     }
+    
+    public void toString(final StringBuilder buffer) {
+        buffer.append(tag).append('=').append(data.toString());
+    }
 }

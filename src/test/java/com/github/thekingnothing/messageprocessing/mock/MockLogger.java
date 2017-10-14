@@ -26,6 +26,11 @@ public class MockLogger implements Logger {
         info(String.format(message, args));
     }
     
+    @Override
+    public void error(final String message, final Throwable e) {
+    
+    }
+    
     public void assertLogContains(final String message) {
         final Condition<List<?>> logContainsRecord = new Condition<List<?>>() {
             

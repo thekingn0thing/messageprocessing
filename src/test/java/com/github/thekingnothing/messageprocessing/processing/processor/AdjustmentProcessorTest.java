@@ -37,9 +37,10 @@ public class AdjustmentProcessorTest implements WithMessage {
     public void should_process_and_store_adjustment_message() {
         final int adjustmentType = 1;
         final BigDecimal price = new BigDecimal("17.1");
-        final Message message = createAdjustmentMessage(symbol, adjustmentType, price);
-        
-        objectUnderTest.process(message);
+        final Message adjustmentMessage = createAdjustmentMessage(symbol, adjustmentType, price);
+    
+        storage.storeOrder(new Order(symbol, BigDecimal.ONE, BigDecimal.ONE));
+        objectUnderTest.process(adjustmentMessage);
     
         assertThat(storage.allAdjustment())
             .as("Message Type 3 is recorded.")
@@ -93,5 +94,23 @@ public class AdjustmentProcessorTest implements WithMessage {
             .as("Adjustment is applied to total.")
             .extracting(Total::getQuantity, Total::getTotalValue)
             .containsExactly(new BigDecimal("21"), new BigDecimal("243.1"));
+    }
+    
+    @Test
+    public void should_ignore_adjustment_for_symbol_for_that_no_trades_in_logs() {
+    
+        final int adjustmentType = 1;
+        final BigDecimal price = new BigDecimal("1.21");
+        final Message message = createAdjustmentMessage(symbol, adjustmentType, price);
+    
+        objectUnderTest.process(message);
+    
+        assertThat(storage.allAdjustment())
+            .as("Adjustment for symbol with out orders is ignored.")
+            .isEmpty();
+    
+        assertThat(storage.allTotals())
+            .as("Adjustment for symbol with out orders is ignored and total is not created.")
+            .isEmpty();
     }
 }

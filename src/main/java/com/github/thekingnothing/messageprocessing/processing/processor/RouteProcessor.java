@@ -9,9 +9,6 @@ import com.github.thekingnothing.messageprocessing.message.MessageType;
 import java.util.Map;
 
 public class RouteProcessor implements Processor {
-    
-    private static final Logger LOGGER = LogFactory.getLogger();
-    
     private final Map<MessageType, Processor> processors;
     
     public RouteProcessor(final Map<MessageType, Processor> processors) {
@@ -20,8 +17,6 @@ public class RouteProcessor implements Processor {
     
     @Override
     public void process(final Message message) {
-        LOGGER.info("Receive message %s", message);
-        
         final Processor processor = processors.get(message.getMessageType());
         if (processor == null){
             throw new IllegalArgumentException("Unknown message type " + message.getMessageType());
