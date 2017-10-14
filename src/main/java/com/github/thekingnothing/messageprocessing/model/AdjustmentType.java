@@ -5,13 +5,13 @@ import java.math.BigDecimal;
 public enum AdjustmentType {
     ADD(1) {
         @Override
-        public BigDecimal apply(final BigDecimal oldPrice, final BigDecimal newPrice) {
-            return oldPrice.add(newPrice);
+        public BigDecimal apply(final BigDecimal oldPrice, final BigDecimal adjustmentPrice) {
+            return oldPrice.add(adjustmentPrice);
         }
     
         @Override
-        public BigDecimal apply(final Total total, final BigDecimal newPrice) {
-            return total.getTotalValue().add(total.getQuantity().multiply(newPrice));
+        public BigDecimal apply(final Total total, final BigDecimal adjustmentPrice) {
+            return total.getTotalValue().add(total.getQuantity().multiply(adjustmentPrice));
         }
     
         @Override
@@ -22,18 +22,30 @@ public enum AdjustmentType {
     
     SUB(2) {
         @Override
-        public BigDecimal apply(final BigDecimal oldPrice, final BigDecimal newPrice) {
-            return oldPrice.subtract(newPrice);
+        public BigDecimal apply(final BigDecimal oldPrice, final BigDecimal adjustmentPrice) {
+            return oldPrice.subtract(adjustmentPrice);
         }
     
         @Override
         public BigDecimal apply(final Total total, final BigDecimal newPrice) {
-            return total.getTotalValue().add(total.getQuantity().multiply(newPrice));
+            return total.getTotalValue().subtract(total.getQuantity().multiply(newPrice));
         }
     
         @Override
         public String toString() {
             return "-";
+        }
+    },
+    
+    MULT(3) {
+        @Override
+        public BigDecimal apply(final BigDecimal oldPrice, final BigDecimal newPrice) {
+            return oldPrice.multiply(newPrice);
+        }
+    
+        @Override
+        public BigDecimal apply(final Total total, final BigDecimal newPrice) {
+            return total.getTotalValue().multiply(newPrice);
         }
     };
     
