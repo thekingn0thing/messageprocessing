@@ -30,6 +30,8 @@ java -jar messageprocessing-1.0-SNAPSHOT.jar [path to file]
 
 The system uses simplified [FIX-like](http://www.fixtradingcommunity.org) message format. Each message contains tag number and value. Main different that only few tags are supported and that message should start always from Message Type(35) tag. 
 
+Example: `35=144=14.455=ABC`
+
 ### Supported Message Types:
 
 <table>
