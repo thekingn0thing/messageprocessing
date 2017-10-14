@@ -1,0 +1,31 @@
+sudo: false
+language: java
+cache:
+  directories:
+  - "$HOME/.cache"
+
+dist: trusty
+
+group: edge
+
+language: java
+
+matrix:
+  include:
+  - jdk: oraclejdk8
+  - jdk: oraclejdk9
+
+addons:
+  apt:
+    packages:
+      - oracle-java9-installer
+
+install:
+ - true
+
+script:
+  # We are using && below on purpose
+  # ciPerformRelease must run only when the entire build has completed
+  # This guarantees that no release steps are executed when the build or tests fail
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - mvn test -B
