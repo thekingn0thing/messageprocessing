@@ -1,4 +1,4 @@
-package com.github.thekingnothing.messageprocessing.processor;
+package com.github.thekingnothing.messageprocessing.test;
 
 import com.github.thekingnothing.messageprocessing.message.Message;
 import com.github.thekingnothing.messageprocessing.message.MessageType;

@@ -2,10 +2,6 @@ package com.github.thekingnothing.messageprocessing.processor;
 
 
 import com.github.thekingnothing.messageprocessing.message.Message;
-import com.github.thekingnothing.messageprocessing.message.MessageType;
-import com.github.thekingnothing.messageprocessing.message.field.AdjustmentOperationType;
-import com.github.thekingnothing.messageprocessing.message.field.Price;
-import com.github.thekingnothing.messageprocessing.message.field.Symbol;
 import com.github.thekingnothing.messageprocessing.model.Adjustment;
 import com.github.thekingnothing.messageprocessing.model.AdjustmentType;
 import com.github.thekingnothing.messageprocessing.model.Order;
@@ -13,6 +9,7 @@ import com.github.thekingnothing.messageprocessing.model.SymbolAdjustment;
 import com.github.thekingnothing.messageprocessing.model.Total;
 import com.github.thekingnothing.messageprocessing.storage.Storage;
 import com.github.thekingnothing.messageprocessing.storage.support.DefaultStorage;
+import com.github.thekingnothing.messageprocessing.test.WithMessage;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -51,11 +51,6 @@ public final class Adjustment {
     
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Adjustment{");
-        sb.append("symbol='").append(symbol).append('\'');
-        sb.append(", adjustmentType=").append(adjustmentType);
-        sb.append(", price=").append(price);
-        sb.append('}');
-        return sb.toString();
+        return getAdjustmentType() + getPrice().toString();
     }
 }

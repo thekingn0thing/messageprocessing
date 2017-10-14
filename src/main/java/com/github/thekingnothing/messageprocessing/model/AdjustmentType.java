@@ -13,6 +13,11 @@ public enum AdjustmentType {
         public BigDecimal apply(final Total total, final BigDecimal newPrice) {
             return total.getTotalPrice().add(total.getQuantity().multiply(newPrice));
         }
+    
+        @Override
+        public String toString() {
+            return "+";
+        }
     },
     
     SUB(2) {
@@ -24,6 +29,11 @@ public enum AdjustmentType {
         @Override
         public BigDecimal apply(final Total total, final BigDecimal newPrice) {
             return total.getTotalPrice().add(total.getQuantity().multiply(newPrice));
+        }
+    
+        @Override
+        public String toString() {
+            return "-";
         }
     };
     

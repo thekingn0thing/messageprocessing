@@ -6,6 +6,7 @@ import com.github.thekingnothing.messageprocessing.model.SymbolAdjustment;
 import com.github.thekingnothing.messageprocessing.model.Total;
 
 import java.util.List;
+import java.util.Map;
 
 public interface Storage {
     void storeOrder(final Order order);
@@ -23,4 +24,6 @@ public interface Storage {
     List<Order> ordersForSymbol(String symbol);
     
     void truncateOrders(String symbol);
+    
+    Map<String, Total> allTotals();
 }

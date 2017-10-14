@@ -1,5 +1,6 @@
 package com.github.thekingnothing.messageprocessing.processor;
 
+import com.github.thekingnothing.messageprocessing.Processor;
 import com.github.thekingnothing.messageprocessing.log.Logger;
 import com.github.thekingnothing.messageprocessing.log.support.LogFactory;
 import com.github.thekingnothing.messageprocessing.message.Message;

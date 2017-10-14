@@ -1,7 +1,6 @@
 package com.github.thekingnothing.messageprocessing.processor;
 
 import com.github.thekingnothing.messageprocessing.model.Order;
-import com.github.thekingnothing.messageprocessing.processor.Processor;
 import com.github.thekingnothing.messageprocessing.message.Message;
 import com.github.thekingnothing.messageprocessing.message.field.Price;
 import com.github.thekingnothing.messageprocessing.message.field.Quantity;

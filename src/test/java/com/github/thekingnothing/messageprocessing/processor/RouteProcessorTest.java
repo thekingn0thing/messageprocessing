@@ -1,20 +1,21 @@
 package com.github.thekingnothing.messageprocessing.processor;
 
 
+import com.github.thekingnothing.messageprocessing.Processor;
 import com.github.thekingnothing.messageprocessing.message.Message;
 import com.github.thekingnothing.messageprocessing.message.MessageType;
+import com.github.thekingnothing.messageprocessing.mock.MockProcessor;
+import com.github.thekingnothing.messageprocessing.test.WithMessage;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class RouteProcessorTest implements WithMessage{
+public class RouteProcessorTest implements WithMessage {
     
     private MockProcessor processor;
     private RouteProcessor objectUnderTest;
@@ -45,24 +46,6 @@ public class RouteProcessorTest implements WithMessage{
         assertThatThrownBy(() ->  objectUnderTest.process(message))
             .as("Exception is thrown for unknown message type")
             .isInstanceOf(IllegalArgumentException.class);
-    }
-    
-    private static class MockProcessor implements Processor {
-    
-        private final List<Message> messages;
-    
-        private MockProcessor() {messages = new ArrayList<>();}
-    
-        @Override
-        public void process(final Message message) {
-            messages.add(message);
-        }
-        
-        private void verifyMessageProcessed(final Message message){
-            assertThat(messages)
-                .as("Verify message `%s` has been processed.", message)
-                .containsExactly(message);
-        }
     }
     
 }

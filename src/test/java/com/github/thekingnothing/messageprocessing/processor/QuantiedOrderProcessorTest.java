@@ -5,6 +5,7 @@ import com.github.thekingnothing.messageprocessing.model.Order;
 import com.github.thekingnothing.messageprocessing.model.Total;
 import com.github.thekingnothing.messageprocessing.storage.Storage;
 import com.github.thekingnothing.messageprocessing.storage.support.DefaultStorage;
+import com.github.thekingnothing.messageprocessing.test.WithMessage;
 import org.junit.Before;
 import org.junit.Test;
 

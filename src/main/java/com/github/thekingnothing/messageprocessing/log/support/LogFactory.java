@@ -6,7 +6,7 @@ import com.github.thekingnothing.messageprocessing.log.Logger;
 
 public class LogFactory {
     
-    private static LogImplementer factory = new ConsoleLogImplementer();
+    public static LogImplementer factory = new ConsoleLogImplementer();
     
     public static Logger getLogger(){
         return factory.getLogger();

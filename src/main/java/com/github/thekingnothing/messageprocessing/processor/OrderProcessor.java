@@ -1,5 +1,6 @@
 package com.github.thekingnothing.messageprocessing.processor;
 
+import com.github.thekingnothing.messageprocessing.Processor;
 import com.github.thekingnothing.messageprocessing.model.Order;
 import com.github.thekingnothing.messageprocessing.model.Total;
 import com.github.thekingnothing.messageprocessing.storage.Storage;
