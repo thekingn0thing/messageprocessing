@@ -1,6 +1,6 @@
 ## Message Processing System 
 
-The system record and process message of 3 types from incoming file.  
+The system record and process message of 3 types from incoming file. The system is written with using pure Java without any frameworks and distributed as java console tool.
 
 ## Build
 
@@ -57,10 +57,15 @@ The system uses simplified [FIX-like](http://www.fixtradingcommunity.org) messag
 </tr>
 </table>
 
-### Sported tags
+### Supported tags
 
 * Message Type(35)
 * Quantity(53)
 * Price(44)
 * Symbol(55)
 * Adjustment Type(334)
+
+
+### Exception handling
+
+Exception handling is implement only for message processing. Right now most of exception during message parsing are ignored.  
